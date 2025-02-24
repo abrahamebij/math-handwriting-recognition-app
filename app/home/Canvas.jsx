@@ -146,7 +146,7 @@ export default function Canvas({
     toast.success("Image Downloaded!!!");
   }
   return (
-    <main className="flex flex-col h-screen bg-slate-50 max-w-3xl mx-auto p-5">
+    <main className="flex flex-col h-screen bg-gray-100 max-w-3xl mx-auto px-5 py-3">
       <div className="flex items-center justify-between">
         <div className="">
           {/* Question Display Section */}
@@ -159,12 +159,12 @@ export default function Canvas({
 
           {/* Canvas Control Tools */}
           <div className="flex items-center gap-2 p-4 border-b">
-            <button className="btn" onClick={clearCanvas}>
-              <FaEraser className="h-4 w-4" />
+            <button className="btn btn-primary" onClick={clearCanvas}>
+              <FaEraser className="h-4 w-4 text-white" />
               <span className="sr-only">Clear canvas</span>
             </button>
-            <button className="btn" onClick={undoLastPath}>
-              <FaUndo className="h-4 w-4" />
+            <button className="btn btn-primary" onClick={undoLastPath}>
+              <FaUndo className="h-4 w-4 text-white" />
               <span className="sr-only">Undo last stroke</span>
             </button>
           </div>
@@ -172,12 +172,14 @@ export default function Canvas({
         {/* Math Rendering */}
         <div className="px-3">
           <div
-            className={`animate-ping w-5 h-5 bg-gray-300 rounded-full ${
+            className={`animate-ping w-5 h-5 bg-gray-400 rounded-full ${
               loading ? "block" : "hidden"
             }`}
           ></div>
           <div
-            className={`text-3xl font-bold ${!loading ? "block" : "hidden"}`}
+            className={`text-2xl lg:text-3xl font-bold text-primary ${
+              !loading ? "block" : "hidden"
+            }`}
           >
             <MathJax>{res}</MathJax>
           </div>
@@ -187,7 +189,7 @@ export default function Canvas({
       <div className="flex-1 relative p-4">
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 touch-none bg-white rounded-lg shadow-sm"
+          className="absolute inset-0 touch-none bg-white rounded-lg shadow-sm border border-gray-400"
           onMouseDown={startDrawing}
           onMouseMove={draw}
           onMouseUp={stopDrawing}
@@ -197,17 +199,16 @@ export default function Canvas({
           onTouchEnd={stopDrawing}
         />
       </div>
-
       {/* Submit Button */}
       <div className="p-4 flex justify-center gap-x-2">
         <button
-          className="btn btn-primary w-full max-w-md text-lg"
+          className="btn btn-primary text-white w-full max-w-md text-lg"
           onClick={recognizeText}
         >
           Submit
         </button>
         <button className="btn btn-primary" onClick={downloadImage}>
-          <FaDownload />
+          <FaDownload className="text-white" />
         </button>
       </div>
     </main>

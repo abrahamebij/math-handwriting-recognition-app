@@ -27,7 +27,6 @@ export default function RootLayout({
           {/* Navigation */}
           {/* <Navbar /> */}
           {/* Content */}
-          <div className="pt-10"></div>
           {children}
           {/* Footer */}
           {/* <Footer /> */}
