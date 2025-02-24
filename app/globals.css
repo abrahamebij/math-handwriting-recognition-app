@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-color-scheme: dark) {
+}
+
+/* body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background:#010035;
+  border-radius: 5px;
+  margin: 3px;
+} */
+body::-webkit-scrollbar-track{
+  background: #01003516;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.the-card:hover img {
+  transform: scale(1.1);
+  transition: all 350ms;
+}
+.the-card:hover #title {
+  text-decoration: underline;
+}
+
+.nav-link {
+  @apply border-b lg:border-b-0 block lg:inline-block py-3 hover:bg-gray-100 lg:hover:bg-transparent text-gray-700 lg:text-gray-600 lg:link hover:lg:link-primary lg:link-hover lg:underline-offset-1 font-semibold px-3;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
