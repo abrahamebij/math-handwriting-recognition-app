@@ -6,7 +6,6 @@ import { MathJax } from "better-react-mathjax";
 
 export default function Canvas({
   res,
-  question,
   loading,
   canvasRef,
   contextRef,

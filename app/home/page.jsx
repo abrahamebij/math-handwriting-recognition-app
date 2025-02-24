@@ -6,7 +6,6 @@ import { MathJaxContext } from "better-react-mathjax";
 export default function Home() {
   const [res, setRes] = useState("");
   const [loading, setLoading] = useState(false);
-  const [question, setQuestion] = useState("Solve for x: 2x + 5 = 13");
   // Refs and state management
   const canvasRef = useRef(null); // Reference to canvas element
   const contextRef = useRef(null); // Reference to canvas context
@@ -15,7 +14,7 @@ export default function Home() {
     setLoading(true);
     const canvas = prepareCanvasImage(canvasRef);
     const dataURL = canvas.toDataURL("image/png");
-    let response = await recognizeText({ question, img: dataURL });
+    let response = await recognizeText({ img: dataURL });
     // console.log(response);
     setRes(response);
     setLoading(false);
@@ -33,7 +32,6 @@ export default function Home() {
       >
         <Canvas
           res={res}
-          question={question}
           loading={loading}
           recognizeText={recognize}
           canvasRef={canvasRef}

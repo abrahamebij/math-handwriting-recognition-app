@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Math Practice App with Handwriting Recognition
 
-First, run the development server:
+A web application that allows users to practice math problems by writing solutions on a digital canvas. The app uses AI to recognize handwritten mathematical expressions and provides instant feedback.
 
+Inspired by the [stackup.dev](https://stackup.dev) February Hackathon challenge to create an interactive math learning experience with handwriting recognition and AI-assisted question generation.
+
+
+## Features
+
+- Interactive drawing canvas with touch support
+- Handwriting recognition for mathematical expressions
+- Real-time MathJax rendering of recognized equations
+- Drawing tools (undo, clear)
+- Support for multi-line equations
+- Mobile-responsive design
+
+## Demo
+
+
+## Tech Stack
+
+- Next.js
+- Tailwind CSS
+- DaisyUI
+- better-react-mathjax
+- Canvas API
+- OpenAI API (for handwriting recognition)
+
+## Prerequisites
+
+- Node.js 16.8 or later
+- npm or yarn
+- OpenAI API key
+
+## Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/abrahamebij/math-handwriting-recognition-app
+cd math-practice-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+Create a `.env.local` file in the root directory:
+```env
+GENAI_KEY=your_api_key_here
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+1. View a math problem displayed at the top of the screen
+2. Write your solution on the canvas using mouse or touch
+3. Use the toolbar to undo strokes or clear the canvas
+4. Click submit to convert your handwriting to mathematical notation
+5. View the recognized equation rendered with MathJax
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── page.tsx            # Landing page
+│   └── practice/           # Practice interface
+├── components/
+│   └── PracticeInterface/  # Main canvas component
+└── lib/
+    └── utils/             # Utility functions
+```
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
+
+## Acknowledgments
+
+- Google GenAI API for the handwriting recognition API
+- better-react-mathjax for equation rendering
+- Canvas API for drawing functionality

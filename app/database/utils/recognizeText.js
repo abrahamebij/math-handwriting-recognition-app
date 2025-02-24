@@ -7,7 +7,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 // const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 
 async function recognizeText(data) {
-  const { question, img } = data;
+  const { img } = data;
 
   try {
     // Remove the data URL prefix if present
