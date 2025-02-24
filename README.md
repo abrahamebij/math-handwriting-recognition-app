@@ -3,7 +3,7 @@
 
 A web application that allows users to practice math problems by writing solutions on a digital canvas. The app uses AI to recognize handwritten mathematical expressions and provides instant feedback.
 
-Inspired by the [stackup.dev](https://stackup.dev) February Hackathon challenge to create an interactive math learning experience with handwriting recognition and AI-assisted question generation.
+Inspired by the [stackup.dev] February Hackathon challenge to create an interactive math learning experience with handwriting recognition and AI-assisted question generation.
 
 
 ## Features
@@ -16,6 +16,7 @@ Inspired by the [stackup.dev](https://stackup.dev) February Hackathon challenge 
 - Mobile-responsive design
 
 ## Demo
+https://math-handwriting-recognition-app.vercel.app/
 
 
 ## Tech Stack

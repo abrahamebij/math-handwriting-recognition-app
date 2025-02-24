@@ -150,7 +150,7 @@ export default function Canvas({
       <div className="flex items-center justify-between">
         <div className="">
           {/* Question Display Section */}
-          <div className="p-4 bg-white shadow-sm">
+          <div className="p-4">
             <h2 className="text-2xl font-bold text-blue-600">
               Math Handwriting Recognizer
             </h2>
@@ -158,7 +158,7 @@ export default function Canvas({
           </div>
 
           {/* Canvas Control Tools */}
-          <div className="flex items-center gap-2 p-4 border-b bg-white">
+          <div className="flex items-center gap-2 p-4 border-b">
             <button className="btn" onClick={clearCanvas}>
               <FaEraser className="h-4 w-4" />
               <span className="sr-only">Clear canvas</span>
