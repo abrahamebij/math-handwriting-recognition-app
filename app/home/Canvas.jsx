@@ -2,7 +2,16 @@
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
 import { FaEraser, FaUndo, FaDownload } from "react-icons/fa";
-import { MathJaxContext, MathJax } from "better-react-mathjax";
+import dynamic from "next/dynamic";
+// import { MathJaxContext, MathJax } from "better-react-mathjax";
+const MathJaxContext = dynamic(
+  () => import("better-react-mathjax").then((mod) => mod.MathJaxContext),
+  { ssr: false }
+);
+const MathJax = dynamic(
+  () => import("better-react-mathjax").then((mod) => mod.MathJax),
+  { ssr: false }
+);
 
 export default function Canvas({
   res,
