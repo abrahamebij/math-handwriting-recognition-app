@@ -29,6 +29,13 @@ export default function Home() {
               ["$", "$"],
               ["\\(", "\\)"],
             ],
+            displayMath: [
+              ["$$", "$$"],
+              ["\\[", "\\]"],
+            ],
+          },
+          startup: {
+            typeset: false,
           },
         }}
       >
