@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "Home - SkillzMart",
+  title: "Math Handwriting Recognizer",
   description:
-    "A platform that connects vendors with customers in OOU Ibogun Campus",
+    "A simple web app that recognizes handwritten math expressions and converts them to LaTeX.",
 };
 
 export default function Layout({ children }) {

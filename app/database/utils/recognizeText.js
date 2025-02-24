@@ -29,8 +29,8 @@ async function recognizeText(data) {
         - For expressions, use the appropriate MathJax delimiters
 
         MathJax formatting rules:
-        - Wrap inline math in \( \) or $ $ delimiters
-        - Wrap displayed equations in \[ \] or $$ $$ delimiters
+        - Wrap inline math in $ $ delimiters
+        - Wrap displayed equations in $$ $$ delimiters
         - Use \frac{num}{den} for fractions
         - Use ^ for superscripts and _ for subscripts
         - Use \sqrt{} for square roots
@@ -55,11 +55,13 @@ async function recognizeText(data) {
     // Call the model with the image
     const result = await model.generateContent([prompt, imagePart]);
 
+    console.log(result.response.text());
     return result.response.text();
   } catch (error) {
     console.error(error.message);
     return "An error occurred while recognizing text.";
   }
 }
+// - Wrap inline math in \( \) or $ $ delimiters
 
 export default recognizeText;

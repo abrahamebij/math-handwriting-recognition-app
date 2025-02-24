@@ -24,7 +24,7 @@ export default function Canvas({
     const container = canvas.parentElement;
     if (container) {
       canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
+      canvas.height = container.clientHeight - container.clientHeight * 0.2;
     }
 
     const context = canvas.getContext("2d");
@@ -170,13 +170,15 @@ export default function Canvas({
           </div>
         </div>
         {/* Math Rendering */}
-        <div>
+        <div className="px-3">
           <div
             className={`animate-ping w-5 h-5 bg-gray-300 rounded-full ${
               loading ? "block" : "hidden"
             }`}
           ></div>
-          <div className={`text-xl font-bold ${!loading ? "block" : "hidden"}`}>
+          <div
+            className={`text-3xl font-bold ${!loading ? "block" : "hidden"}`}
+          >
             <MathJax>{res}</MathJax>
           </div>
         </div>

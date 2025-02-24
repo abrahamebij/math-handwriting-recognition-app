@@ -22,14 +22,15 @@ export default function Home() {
 
   return (
     <>
-      <p>Still working on the rendering but there's no more power in my area</p>
       <MathJaxContext
         config={{
-    tex: {
-      inlineMath: [['\\(', '\\)']],
-      displayMath: [['\\[', '\\]']],
-    },
-  }}
+          tex: {
+            inlineMath: [
+              ["$", "$"],
+              ["\\(", "\\)"],
+            ],
+          },
+        }}
       >
         <Canvas
           res={res}
