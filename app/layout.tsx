@@ -5,12 +5,6 @@ import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
-// export const metadata: Metadata = {
-//   title: "SkillzMart",
-//   description:
-//     "A platform that connects vendors with customers in OOU Ibogun Campus",
-// };
-
 export default function RootLayout({
   children,
 }: Readonly<{
