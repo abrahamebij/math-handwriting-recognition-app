@@ -2,7 +2,6 @@
 import Canvas, { prepareCanvasImage } from "./Canvas";
 import { useState, useRef } from "react";
 import recognizeText from "../database/utils/recognizeText";
-import { MathJaxContext } from "better-react-mathjax";
 export default function Home() {
   const [res, setRes] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,31 +21,13 @@ export default function Home() {
 
   return (
     <>
-      <MathJaxContext
-        config={{
-          tex: {
-            inlineMath: [
-              ["$", "$"],
-              ["\\(", "\\)"],
-            ],
-            displayMath: [
-              ["$$", "$$"],
-              ["\\[", "\\]"],
-            ],
-          },
-          startup: {
-            typeset: false,
-          },
-        }}
-      >
-        <Canvas
-          res={res}
-          loading={loading}
-          recognizeText={recognize}
-          canvasRef={canvasRef}
-          contextRef={contextRef}
-        />
-      </MathJaxContext>
+      <Canvas
+        res={res}
+        loading={loading}
+        recognizeText={recognize}
+        canvasRef={canvasRef}
+        contextRef={contextRef}
+      />
     </>
   );
 }

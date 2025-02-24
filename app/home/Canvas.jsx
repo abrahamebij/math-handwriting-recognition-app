@@ -2,7 +2,7 @@
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
 import { FaEraser, FaUndo, FaDownload } from "react-icons/fa";
-import { MathJax } from "better-react-mathjax";
+import { MathJaxContext, MathJax } from "better-react-mathjax";
 
 export default function Canvas({
   res,
@@ -181,7 +181,25 @@ export default function Canvas({
               !loading ? "block" : "hidden"
             }`}
           >
-            <MathJax>{res}</MathJax>
+            <MathJaxContext
+              config={{
+                tex: {
+                  inlineMath: [
+                    ["$", "$"],
+                    ["\\(", "\\)"],
+                  ],
+                  displayMath: [
+                    ["$$", "$$"],
+                    ["\\[", "\\]"],
+                  ],
+                },
+                startup: {
+                  typeset: false,
+                },
+              }}
+            >
+              <MathJax>{res}</MathJax>
+            </MathJaxContext>
           </div>
         </div>
       </div>
