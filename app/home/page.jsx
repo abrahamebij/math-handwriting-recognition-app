@@ -24,11 +24,11 @@ export default function Home() {
     <>
       <MathJaxContext
         config={{
-          tex: {
-            inlineMath: [["$", "$"]],
-            displayMath: [["$$", "$$"]],
-          },
-        }}
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+    },
+  }}
       >
         <Canvas
           res={res}
