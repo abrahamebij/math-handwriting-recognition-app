@@ -154,7 +154,7 @@ export default function Canvas({
         <div className="">
           {/* Question Display Section */}
           <div className="p-4">
-            <h2 className="text-2xl font-bold text-blue-600">
+            <h2 className="text-2xl font-bold text-primary">
               Math Handwriting Recognizer
             </h2>
             {/* <p className="mt-2 text-lg">{question}</p> */}
@@ -192,7 +192,7 @@ export default function Canvas({
       <div className="flex-1 relative p-4">
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 touch-none bg-white rounded-lg shadow-sm border border-gray-400"
+          className="absolute inset-0 touch-none bg-white rounded-lg shadow-sm border border-gray-400 cursor-crosshair"
           onMouseDown={startDrawing}
           onMouseMove={draw}
           onMouseUp={stopDrawing}
@@ -203,7 +203,7 @@ export default function Canvas({
         />
       </div>
       {/* Submit Button */}
-      <div className="p-4 flex justify-center gap-x-2">
+      <div className="p-4 flex justify-center gap-x-2 mb-8">
         <button
           className="btn btn-primary text-white w-full max-w-md text-lg"
           onClick={recognizeText}
