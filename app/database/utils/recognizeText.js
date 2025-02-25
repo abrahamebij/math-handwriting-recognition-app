@@ -54,38 +54,38 @@ async function recognizeText(data) {
   const { img } = data;
 
   try {
-    // Remove the data URL prefix if present
     const base64Data = img.replace(/^data:image\/\w+;base64,/, "");
-    // Prepare the image part for the model
     const imagePart = {
       inlineData: {
         data: base64Data,
-        mimeType: "image/png", // Adjust mime type based on your image format
+        mimeType: "image/png",
       },
     };
 
-    // Use the prompt defined above
     const result = await model.generateContent([prompt, imagePart]);
     let responseText = result.response.text();
-    // Clean up the response - remove markdown code blocks if present
-    // responseText = responseText
-    //   .replace(/```json\s*/g, "")
-    //   .replace(/```\s*$/g, "")
-    //   .trim();
 
-    console.log("Raw response:", responseText);
+    console.log("Raw response before escaping:", responseText);
+
+    // **Fix JSON invalid characters before parsing**
+    responseText = responseText.replace(/\\/g, "\\\\"); // Escape single `\` to `\\` for valid JSON
+
+    console.log("Escaped response for JSON parsing:", responseText);
 
     try {
-      // Parse the JSON array response
       const parsedLines = JSON.parse(responseText);
 
-      // Verify it's an array
-      if (Array.isArray(parsedLines) === false) {
+      if (!Array.isArray(parsedLines)) {
         console.error("Response is not an array:", parsedLines);
         return ["Error: Response is not in the expected array format"];
       }
 
-      return parsedLines;
+      // **Fix KaTeX formatting after parsing** (convert `\\` back to `\` for rendering)
+      const formattedLines = parsedLines.map((line) =>
+        line.replace(/\\\\/g, "\\")
+      );
+
+      return formattedLines;
     } catch (jsonError) {
       console.error(
         "JSON parsing error:",
@@ -93,8 +93,7 @@ async function recognizeText(data) {
         "Raw text:",
         responseText
       );
-      // Fallback: return as a single-element array if JSON parsing fails
-      return [responseText];
+      return ["Error: Failed to parse JSON"];
     }
   } catch (error) {
     console.error(error.message);
