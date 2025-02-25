@@ -157,6 +157,7 @@ export default function Canvas({
             <h2 className="text-2xl font-bold text-primary">
               Math Handwriting Recognizer
             </h2>
+            <p className="text-gray-600 pt-2">Also recognizes regular texts</p>
             {/* <p className="mt-2 text-lg">{question}</p> */}
           </div>
 
@@ -184,7 +185,7 @@ export default function Canvas({
               !loading ? "block" : "hidden"
             }`}
           >
-            {renderKaTeX(res)}
+            {renderContent(res)}
           </div>
         </div>
       </div>
@@ -285,5 +286,16 @@ const renderKaTeX = (text) => {
       <div className="text-red-500">Error parsing mathematical content</div>
     );
   }
+};
+const renderContent = (lines) => {
+  console.log(lines);
+
+  if (!lines || lines.length === 0) return null;
+
+  return lines.map((line, lineIndex) => (
+    <div key={lineIndex} className="mb-2">
+      {renderKaTeX(line)}
+    </div>
+  ));
 };
 export { prepareCanvasImage };
