@@ -2,16 +2,10 @@
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
 import { FaEraser, FaUndo, FaDownload } from "react-icons/fa";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
+import "katex/dist/katex.min.css";
+import { InlineMath, BlockMath } from "react-katex";
 // import { MathJaxContext, MathJax } from "better-react-mathjax";
-const MathJaxContext = dynamic(
-  () => import("better-react-mathjax").then((mod) => mod.MathJaxContext),
-  { ssr: false }
-);
-const MathJax = dynamic(
-  () => import("better-react-mathjax").then((mod) => mod.MathJax),
-  { ssr: false }
-);
 
 export default function Canvas({
   res,
@@ -190,25 +184,7 @@ export default function Canvas({
               !loading ? "block" : "hidden"
             }`}
           >
-            <MathJaxContext
-              config={{
-                tex: {
-                  inlineMath: [
-                    ["$", "$"],
-                    ["\\(", "\\)"],
-                  ],
-                  displayMath: [
-                    ["$$", "$$"],
-                    ["\\[", "\\]"],
-                  ],
-                },
-                startup: {
-                  typeset: false,
-                },
-              }}
-            >
-              <MathJax>{res}</MathJax>
-            </MathJaxContext>
+            {renderKaTeX(res)}
           </div>
         </div>
       </div>
@@ -262,5 +238,52 @@ const prepareCanvasImage = (canvasRef) => {
 
   return tempCanvas;
 };
+// Function to render the math expressions
+const renderKaTeX = (text) => {
+  if (!text) return null;
 
+  try {
+    // Split by delimiters to identify math expressions
+    const parts = text.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g);
+
+    return parts.map((part, index) => {
+      if (part.startsWith("$$") && part.endsWith("$$")) {
+        // Display math (centered equation)
+        try {
+          const math = part.slice(2, -2).trim();
+          return <BlockMath key={index} math={math} />;
+        } catch (err) {
+          console.error("KaTeX error with BlockMath:", err);
+          return (
+            <div key={index} className="text-red-500">
+              Error rendering equation: {part}
+            </div>
+          );
+        }
+      } else if (part.startsWith("$") && part.endsWith("$")) {
+        // Inline math
+        try {
+          const math = part.slice(1, -1).trim();
+          return <InlineMath key={index} math={math} />;
+        } catch (err) {
+          console.error("KaTeX error with InlineMath:", err);
+          return (
+            <span key={index} className="text-red-500">
+              Error rendering: {part}
+            </span>
+          );
+        }
+      } else if (part.trim()) {
+        // Regular text (if not empty)
+        return <span key={index}>{part}</span>;
+      }
+      return null;
+    });
+  } catch (err) {
+    console.error("Error parsing math:", err);
+    return (
+      <div className="text-red-500">Error parsing mathematical content</div>
+    );
+  }
+};
 export { prepareCanvasImage };
