@@ -18,7 +18,8 @@ Inspired by the [stackup.dev] February Hackathon challenge to create an interact
 ## Demo
 https://math-handwriting-recognition-app.vercel.app/
 
-![image](https://github.com/user-attachments/assets/9eba9c40-b2c1-4963-961e-c06b4ffc6d26)
+![sCapture](https://github.com/user-attachments/assets/e592a189-525f-4fac-bb0f-f166ff8ed3c6)
+
 
 
 
